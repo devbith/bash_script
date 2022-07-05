@@ -8,15 +8,15 @@ PORT_PS=$(lsof -i :${PORT} | awk 'FNR==2 {print $2}')
 SLEEP_COUNTER=0
 while [ ! -n "${PORT_PS}" ]
 do
- SLEEP_COUNTER=$((SLEEP_COUNTER+3))
+ SLEEP_COUNTER=$((SLEEP_COUNTER+2))
  echo "Waiting port ${PORT} to start."
- sleep 3
+ sleep 2
 
  PORT_PS=$(lsof -i :${PORT} | awk 'FNR==2 {print $2}')
 
- if [ "${SLEEP_COUNTER}" == 30  ]
+ if [ "${SLEEP_COUNTER}" == 20  ]
  then
-   echo "Wait time out in ${SLEEP_COUNTER} second"
+   echo "Wait Time Out !"
    break
  fi
 
